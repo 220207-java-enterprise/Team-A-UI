@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Principle } from './models/principal';
+import { Principal } from './models/principal';
 
 function App() {
-  let [authUser, setAuthUser] = useState<Principle>();
+  let [authUser, setAuthUser] = useState<Principal>();
   return (
     <Routes>
       <Route path="/login" element={<Login currentUser={authUser} setCurrentUser={setAuthUser}/>}/>
