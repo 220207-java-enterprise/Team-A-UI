@@ -11,8 +11,8 @@ export class Reimbursement {
     paymentId: string;
     authorId: User;
     resolverId: User;
-    statusId: ReimbursementStatus;
-    typeId: ReimbursementType;
+    statusId: string;
+    typeId: string;
 
     constructor (id: string, amount: number, submitted: Date, resolved: Date, description: string, receipt: string, paymentId: string, authorId: User, resolverId: User, statusId: {id: string, status: string}, typeId: {id: string, type: string}) {
         this.id = id;
@@ -24,8 +24,8 @@ export class Reimbursement {
         this. paymentId = paymentId;
         this.authorId = authorId;
         this.resolverId = resolverId;
-        this.statusId = statusId;
-        this.typeId =typeId;
+        this.statusId = statusId.status;
+        this.typeId =typeId.type;
         
     }
 

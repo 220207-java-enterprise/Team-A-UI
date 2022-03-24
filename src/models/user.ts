@@ -7,10 +7,9 @@ export class User {
     givenName: string;
     surname: string;
     isActive: boolean;
-    role: UserRole;
-    //role: {id string, roleName: string}
+    role: string;
 
-    constructor(id: string,  username: string, email: string, password: string, givenName: string, surname: string, isActive: boolean, role: UserRole) {
+    constructor(id: string,  username: string, email: string, password: string, givenName: string, surname: string, isActive: boolean, role: {id: string, roleName: string}) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -18,11 +17,7 @@ export class User {
         this.givenName = givenName;
         this.surname = surname;
         this.isActive = isActive;
-        this.role = role;
+        this.role = role.roleName;
     }
 
-}
-
-
-    
 }

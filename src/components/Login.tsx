@@ -63,10 +63,10 @@ function Login(props: ILoginProps) {
     }
 
     return (
-        props.currentUser ? <Navigate to="/dashboard"/>:
-        <>
-        <h4>Log into you account</h4>
+        // props.currentUser ? <Navigate to="/dashboard"/>:
+        // <>
         <div>
+            <h4>Log into you account</h4>
             <input type="text" id="username" placeholder="Enter your username" onChange={updateUsername}/>
             <br/>
             <input type="password" id="password" placeholder="Enter your password" onChange={updatePassword}/>
@@ -74,8 +74,8 @@ function Login(props: ILoginProps) {
             <button id="loginButton" onClick={login}>Login</button>
             <br/>
         </div>
-        { errorMsg ? <ErrorMessage errorMessage = {errorMsg}/> : <></>}
-        </>
+        // { errorMsg ? <ErrorMessage errorMessage = {errorMsg}/> : <></>}
+        // </>
 
     );
 
