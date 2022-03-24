@@ -38,7 +38,7 @@ function Login(props: ILoginProps) {
         }
         try {
 
-            let resp = await AuthenticatorResponse({username, password});
+            let resp = await authenticate({username, password});
 
             if (resp.status === 400) {
                 setErrorMsg('Invalid username or password provided!');
