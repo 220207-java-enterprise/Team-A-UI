@@ -9,13 +9,13 @@ interface IDashboardProps {
     currentUser: Principal | undefined
 }
 
-function Dashboard(props: IDashboardProps) {
+function UserDashboard(props: IDashboardProps) {
     const[reimbursements, setReimbursments] = useState<any[]>([]);
 
    
 
     useEffect(() => {
-        getAllReimbursements().then(resp => {
+        findReimbursementByAuthor_id().then(resp => {
                 console.log(resp)
                 setReimbursments(resp.data)
             });
@@ -68,4 +68,4 @@ function Dashboard(props: IDashboardProps) {
     )
         }
 
-export default Dashboard;
+export default UserDashboard;

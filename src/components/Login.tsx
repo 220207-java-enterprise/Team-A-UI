@@ -50,7 +50,16 @@ console.log(resp)
 
             if (resp.status === 200) {
                 props.setCurrentUser(resp.data);
-                navigate('/dashboard')
+                console.log(resp.data.role)
+                if(resp.data.role == "Employee") {
+                    navigate('/userdashboard')
+                }
+                else if(resp.data.role == "Finance Manager") {
+                    navigate('/dashboard')
+                }
+                else {
+                navigate('/admindashboard')
+                }
             }
         }
 
