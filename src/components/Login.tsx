@@ -39,7 +39,7 @@ function Login(props: ILoginProps) {
         try {
 
             let resp = await authenticate({username, password});
-
+console.log(resp)
             if (resp.status === 400) {
                 setErrorMsg('Invalid username or password provided!');
             }
@@ -49,9 +49,7 @@ function Login(props: ILoginProps) {
             }
 
             if (resp.status === 200) {
-                let authUser = await resp.data;
-                console.log(authUser);
-                props.setCurrentUser(authUser);
+                props.setCurrentUser(resp.data);
                 navigate('/dashboard')
             }
         }

@@ -10,39 +10,62 @@ interface IDashboardProps {
 }
 
 function Dashboard(props: IDashboardProps) {
-    const[reimbursements, updatereimbursements] = useState<any[]>([]);
+    const[reimbursements, setReimbursments] = useState<any[]>([]);
+
+   
 
     useEffect(() => {
-        if(reimbursements.length == 0) {
-            getAllReimbursements().then(resp => {
-                updatereimbursements(resp.data);
+        getAllReimbursements().then(resp => {
+                console.log(resp)
+                setReimbursments(resp.data)
             });
-        }
-    });
+    }, []
+    );
 
     return (
-        !props.currentUser ? <Navigate to="/login"/> :
+
         <>
-            <h1>Welcome, {props.currentUser.username}!</h1>
+            <h1>Welcome, {props.currentUser?.username}!</h1>
+            <table className="table table-dark"><thead >
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Reimbursement Id:</th>
+                <th scope="col">Amount:</th>
+                <th scope="col">Submitted:</th>
+                <th scope="col">Resolved:</th>
+                <th scope="col">Description:</th>
+                <th scope="col">Receipt:</th>
+                <th scope="col">Payment Id:</th>
+                <th scope="col">Author Id:</th>
+                <th scope="col">Resolver Id:</th>
+                <th scope="col">Status Id:</th>
+                <th scope="col">Type Id:</th>
+                </tr>
+            </thead>
+            <tbody>
             {reimbursements.map((reimbursement, idx) => {
-                return (
-                    <div key={idx}>
-                        <h4>Reimbursement Id: {reimbursement.id}</h4>
-                        <h5>Amount: {reimbursement.amount}</h5>
-                        <h5>Submitted: {reimbursement.submitted}</h5>
-                        <h5>Resolved: {reimbursement.resolved}</h5>
-                        <h5>Description: {reimbursement.description}</h5>
-                        <h5>Receipt: {reimbursement.receipt}</h5>
-                        <h5>Payment Id: {reimbursement.paymentId}</h5>
-                        <h5>Author Id: {reimbursement.authorId.username}</h5>
-                        <h5>Resolver Id: {reimbursement.resolverId.username}</h5>
-                        <h5>Status Id: {reimbursement.statusId.status}</h5>
-                        <h5>Type Id: {reimbursement.typeId.type}</h5>
-                    </div>
+                return(
+                    <tr>
+      <th scope="row" key={idx}>{idx}</th>
+      <td>{reimbursement.reimbId}</td>
+      <td>{reimbursement.amount}</td>
+      <td>{reimbursement.submitted}</td>
+      <td>{reimbursement.resolved}</td>
+      <td>{reimbursement.description}</td>
+      <td>{reimbursement.receipt}</td>
+      <td>{reimbursement.paymentId}</td>
+      <td>{reimbursement.authorId.username}</td>
+      <td>{reimbursement.resolverId?.username}</td>
+      <td>{reimbursement.statusId.status}</td>
+      <td>{reimbursement.typeId.type}</td>
+    </tr>
                 )
+
             })}
+            </tbody>
+        </table>
         </>
     )
-}
+        }
 
 export default Dashboard;
